@@ -29,7 +29,7 @@ class AsyncAspect
     private function getAttribute(JoinPoint $joinPoint): ?Async
     {
         $method = new \ReflectionMethod($joinPoint->getInstance(), $joinPoint->getMethod());
-        /** @var \ReflectionAttribute[] $attributes */
+        /** @var list<\ReflectionAttribute<Async>> $attributes */
         $attributes = $method->getAttributes(Async::class);
         if (empty($attributes)) {
             // 这里返回null，则不进行缓存处理
@@ -53,7 +53,7 @@ class AsyncAspect
 
             // 补充异步参数
             $attribute = $this->getAttribute($joinPoint);
-            if ($attribute) {
+            if ($attribute !== null) {
                 if ($attribute->retryCount > 0) {
                     $message->setMaxRetryCount($attribute->retryCount);
                     $message->setRetryCount($attribute->retryCount);
