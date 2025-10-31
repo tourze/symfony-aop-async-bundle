@@ -1,10 +1,18 @@
 <?php
 
-namespace Tourze\Symfony\AopAsyncBundle\Attribute;
+declare(strict_types=1);
 
+namespace Tourze\Symfony\AopAsyncBundle\Tests\Attribute;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Tourze\Symfony\AopAsyncBundle\Attribute\Async;
 
-class AsyncTest extends TestCase
+/**
+ * @internal
+ */
+#[CoversClass(Async::class)]
+final class AsyncTest extends TestCase
 {
     public function testDefaultValues(): void
     {

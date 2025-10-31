@@ -2,6 +2,8 @@
 
 namespace Tourze\Symfony\AopAsyncBundle\Attribute;
 
+use Tourze\Symfony\Aop\Attribute\MutuallyExclusiveAttribute;
+
 /**
  * 标记方法为异步执行，必须用在public方法上，这是AOP设计的限制
  *
@@ -11,13 +13,12 @@ namespace Tourze\Symfony\AopAsyncBundle\Attribute;
  * 2. 因为异步执行是丢到队列跑的，所以这里不会继承事务
  * 3. 异常也无法处理
  */
-#[\Attribute(\Attribute::TARGET_METHOD)]
-class Async
+#[\Attribute(flags: \Attribute::TARGET_METHOD)]
+class Async implements MutuallyExclusiveAttribute
 {
     public function __construct(
         public int $retryCount = 0,
         public int $delayMs = 0,
-    )
-    {
+    ) {
     }
 }
