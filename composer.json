@@ -15,7 +15,7 @@
     "symfony/yaml": "^7.3",
     "tourze/async-service-call-bundle": "0.0.*",
     "tourze/bundle-dependency": "1.*",
-    "tourze/symfony-aop-bundle": "~0.0.4",
+    "tourze/symfony-aop-bundle": "1.0.*",
     "tourze/symfony-dependency-service-loader": "1.*"
   },
   "require-dev": {
